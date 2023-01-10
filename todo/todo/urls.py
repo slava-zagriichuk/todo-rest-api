@@ -10,13 +10,12 @@ from rest_framework_simplejwt.views import (
 
 router = routers.SimpleRouter()
 router.register(r'todos', ItemViewSet)
-# router.register('login', LoginViewSet, basename="login")
 
 urlpatterns = [
 
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),  # uncomment if you need the django admin panel
+    # path('api/v1/', include('rest_framework.urls')),  # and django authentication form
     path('api/v1/', include(router.urls)),
-    # path('api/v1/', include('rest_framework.urls')),  # Just regular authentication form
     path('api/v1/signup/', RegisterUserAPIView.as_view()),
     path('api/v1/changePassword/', ChangePasswordAPIView.as_view()),
     path('api/v1/signin/', TokenObtainPairView.as_view()),

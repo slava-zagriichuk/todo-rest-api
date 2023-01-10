@@ -10,7 +10,7 @@ class Item(models.Model):
     time_update = models.TimeField(auto_now=True)
     date_update = models.DateField(auto_now=True)
     # for some reasons DateTimeField refuse to work properly with PostGRE SQL database,
-    # so they are put into the model separately
+    # created with makemigrations, so they are putted into the model separately
     status = models.ForeignKey('Status',
                                on_delete=models.PROTECT,
                                null=False,  # null is about necessity
@@ -24,7 +24,7 @@ class Item(models.Model):
 class Status(models.Model):
     name = models.CharField(max_length=20)
     # todo: The table todoapp_status.csv with 3 items inside is placed into the root directory,
-    #  needs to be imported to your database after migration
+    #  and needs to be imported to your database after migration
 
     def __str__(self):
         return self.name
